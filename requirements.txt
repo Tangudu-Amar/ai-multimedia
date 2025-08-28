@@ -1,0 +1,16 @@
+Flask
+python-dotenv
+google-generativeai
+Pillow
+opencv-python
+moviepy
+requests
+openai-whisper
+torch
+torchaudio
+Werkzeug
+python-docx
+mysql-connector-python
+gunicorn
+celery
+redis

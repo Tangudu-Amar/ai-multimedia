@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #a2d0ee, #84b6f4);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    width: 800px;
+    height: 500px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    overflow: hidden;
+}
+
+.login-left {
+    background: linear-gradient(to top right, #2d89ef, #1b6ac9);
+    padding: 40px;
+    width: 50%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-left h2 {
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.login-left input[type="text"],
+.login-left input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-left .forgot {
+    text-align: right;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.login-left button {
+    background-color: #fff;
+    color: #2d89ef;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-left button:hover {
+    background-color: #d1e7ff;
+}
+
+.signup-text {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.signup-text a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.login-right {
+    width: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-right h1 {
+    font-size: 36px;
+    color: #2d89ef;
+    margin-bottom: 10px;
+}
+
+.login-right p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Bubbles */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #2d89ef, #1b6ac9);
+    opacity: 0.2;
+}
+
+.bubble1 {
+    width: 100px;
+    height: 100px;
+    top: 20px;
+    right: 40px;
+}
+
+.bubble2 {
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    left: 30px;
+}
+
+.bubble3 {
+    width: 40px;
+    height: 40px;
+    top: 100px;
+    left: 100px;
+}
+
+.app-title {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

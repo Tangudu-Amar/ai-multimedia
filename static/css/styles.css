@@ -1,0 +1,181 @@
+/* All CSS from index.html (the second style block) goes here */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background: linear-gradient(to right, #a2d0ee, #84b6f4);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.main {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px 40px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+h1 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #00338d;
+}
+
+.upload-button,
+.btn {
+    padding: 12px 20px;
+    background-color: #2d89ef;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.upload-button:hover,
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+select,
+input[type="url"],
+input[type="file"] {
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 500px;
+    font-size: 14px;
+}
+
+.preview-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.preview-container img,
+.preview-container video {
+    max-width: 100%;
+    max-height: 350px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.summary {
+    text-align: left;
+    max-width: 760px;
+    margin: 25px auto 0;
+    padding: 16px;
+    background: #f7faff;
+    border-left: 5px solid #2d89ef;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.summary-textarea {
+    width: 100%;
+    height: 200px;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-copy {
+    background-color: #28a745;
+}
+
+.btn-copy:hover {
+    background-color: #218838;
+}
+
+.btn-download {
+    text-decoration: none;
+    background-color: #007bff;
+}
+
+.btn-download:hover {
+    background-color: #0056b3;
+}
+
+.custom-button {
+    display: inline-flex;
+    margin-top: 30px;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.button-spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #999;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    /* A light grey background */
+    color: #333;
+    margin-top: 40px;
+    /* Provides some space above the footer */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

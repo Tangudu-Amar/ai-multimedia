@@ -1,0 +1,206 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multimedia Processing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="main">
+        <div class="header-bar">
+            <h1>🎯 AI Multimedia Analyzer</h1>
+            <form action="{{ url_for('auth_bp.logout') }}" method="POST" style="margin: 0;">
+                <button type="submit" class="btn logout-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icon-tabler-logout-2"
+                        style="vertical-align: middle; margin-right: 5px;">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+                        <path d="M15 12h-12l3 -3" />
+                        <path d="M6 15l-3 -3" />
+                    </svg>
+                    Logout
+                </button>
+            </form>
+        </div>
+
+        <form action="{{ url_for('analysis_bp.analyze') }}" method="POST" enctype="multipart/form-data"
+            onsubmit="showLoadingOnButton(this)">
+
+            <label for="file_type">Choose File Type:</label>
+            <select name="file_type" id="file_type" onchange="toggleFields()">
+                <option value="image">Image</option>
+                <option value="audio">Audio</option>
+                <option value="video">Video</option>
+            </select>
+
+            <div id="imageInput">
+                <br>
+                <label for="fileInput" class="upload-button">Upload Image</label>
+                <input type="file" name="image" accept="image/*" id="fileInput" onchange="previewImage(event)"
+                    style="display: none;" />
+
+                <p>OR</p>
+
+                <input type="url" name="image_url" id="imageURLInput" placeholder="Paste image URL here..."
+                    style="padding: 10px; width: 80%; max-width: 400px; border-radius: 5px; border: 1px solid #ccc;"
+                    oninput="previewImageFromURL(this.value)" />
+            </div>
+
+            <div id="audioInput" style="display: none;">
+                <br>
+                <label for="audioFile" class="upload-button">Upload Audio</label>
+                <input type="file" style="display: none;" name="audio" accept="audio/*" id="audioFile"
+                    onchange="previewAudio(event)" />
+            </div>
+
+            <div id="videoInput" style="display: none;">
+                <br>
+                <label for="videoFile" class="upload-button">Upload Video</label>
+                <input type="file" style="display: none;" name="video" accept="video/*" id="videoFile"
+                    onchange="previewVideo(event)" />
+            </div>
+
+            <div id="errorBox" style="display: none; color: red; font-weight: bold;"></div>
+            <div class="preview-container">
+                <img id="imagePreview" src="#" alt="Image Preview" style="display: none;" />
+                <audio id="audioPreview" controls style="display: none;"></audio>
+                <video id="videoPreview" controls style="display: none;"></video>
+
+                {% if summary %}
+                <div id="serverPreview">
+                    {% if mode == 'image' and image_url %}
+                    <img src="{{ image_url }}" alt="Uploaded Image" />
+                    {% elif mode == 'audio' and audio_url %}
+                    <audio controls>
+                        <source src="{{ audio_url }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    {% elif mode == 'video' and video_url %}
+                    <video controls>
+                        <source src="{{ video_url }}" type="video/mp4">
+                        Your browser does not support the video element.
+                    </video>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="custom-button upload-button">
+                <span class="button-spinner" style="display: none;"></span>
+                <span class="button-text">Analyze</span>
+            </button>
+        </form>
+
+        {% if summary %}
+        <div class="summary">
+            <strong>Summary:</strong><br>
+
+            <textarea id="summaryText" readonly class="summary-textarea">{{ summary }}</textarea>
+
+            <div class="button-container">
+                <button class="btn btn-copy">📋 Copy to Clipboard</button>
+                <a href="{{ url_for('analysis_bp.download_summary') }}" class="btn btn-download">⬇ Download as Word</a>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if "❌" in summary %}
+        <script>
+            document.getElementById("errorBox").innerText = "{{ summary }}";
+            document.getElementById("errorBox").style.display = "block";
+        </script>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multimedia Processing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="main">
+        <div class="header-bar">
+            <h1>🎯 AI Multimedia Analyzer</h1>
+            <form action="{{ url_for('auth_bp.logout') }}" method="POST" style="margin: 0;">
+                <button type="submit" class="btn logout-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icon-tabler-logout-2"
+                        style="vertical-align: middle; margin-right: 5px;">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+                        <path d="M15 12h-12l3 -3" />
+                        <path d="M6 15l-3 -3" />
+                    </svg>
+                    Logout
+                </button>
+            </form>
+        </div>
+
+        <form action="{{ url_for('analysis_bp.analyze') }}" method="POST" enctype="multipart/form-data"
+            onsubmit="showLoadingOnButton(this)">
+
+            <label for="file_type">Choose File Type:</label>
+            <select name="file_type" id="file_type" onchange="toggleFields()">
+                <option value="image">Image</option>
+                <option value="audio">Audio</option>
+                <option value="video">Video</option>
+            </select>
+
+            <div id="imageInput">
+                <br>
+                <label for="fileInput" class="upload-button">Upload Image</label>
+                <input type="file" name="image" accept="image/*" id="fileInput" onchange="previewImage(event)"
+                    style="display: none;" />
+
+                <p>OR</p>
+
+                <input type="url" name="image_url" id="imageURLInput" placeholder="Paste image URL here..."
+                    style="padding: 10px; width: 80%; max-width: 400px; border-radius: 5px; border: 1px solid #ccc;"
+                    oninput="previewImageFromURL(this.value)" />
+            </div>
+
+            <div id="audioInput" style="display: none;">
+                <br>
+                <label for="audioFile" class="upload-button">Upload Audio</label>
+                <input type="file" style="display: none;" name="audio" accept="audio/*" id="audioFile"
+                    onchange="previewAudio(event)" />
+            </div>
+
+            <div id="videoInput" style="display: none;">
+                <br>
+                <label for="videoFile" class="upload-button">Upload Video</label>
+                <input type="file" style="display: none;" name="video" accept="video/*" id="videoFile"
+                    onchange="previewVideo(event)" />
+            </div>
+
+            <div id="errorBox" style="display: none; color: red; font-weight: bold;"></div>
+            <div class="preview-container">
+                <img id="imagePreview" src="#" alt="Image Preview" style="display: none;" />
+                <audio id="audioPreview" controls style="display: none;"></audio>
+                <video id="videoPreview" controls style="display: none;"></video>
+            </div>
+
+            <button type="submit" class="custom-button upload-button">
+                <span class="button-spinner" style="display: none;"></span>
+                <span class="button-text">Analyze</span>
+            </button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="main">
+        <div class="header-bar">
+            <h1>🎯 Analysis Result</h1>
+            <form action="{{ url_for('auth_bp.logout') }}" method="POST" style="margin: 0;">
+                <button type="submit" class="btn logout-btn">Logout</button>
+            </form>
+        </div>
+
+        {% if mode == 'image' %}
+        <img src="{{ image_url }}" width="300"><br><br>
+        {% elif mode == 'audio' %}
+        <audio controls>
+            <source src="{{ audio_url }}" type="audio/mpeg">
+        </audio>
+        {% elif mode == 'video' %}
+        <video controls width="300">
+            <source src="{{ video_url }}" type="video/mp4">
+        </video>
+        {% endif %}
+
+        <div class="summary">
+            <strong>Summary:</strong><br>
+            <textarea readonly class="summary-textarea">{{ summary }}</textarea>
+            <div class="button-container">
+                <button class="btn btn-copy">📋 Copy to Clipboard</button>
+                <a href="{{ url_for('analysis_bp.download_summary') }}" class="btn btn-download">⬇ Download as Word</a>
+            </div>
+        </div>
+
+        <a href="{{ url_for('analysis_bp.index') }}" class="custom-button upload-button">Analyze Another File</a>
+    </div>
+</body>
+
+</html>
