@@ -387,12 +387,16 @@ def analyze_video(file):
         frame_paths = extract_frames(save_path)
 
         # Describe frames using threads (faster than sequential)
-        descriptions = []
+        descriptions = [None] * len(frame_paths)
         with ThreadPoolExecutor(max_workers=5) as executor:  # adjust max_workers based on your API keys
-            future_to_frame = {executor.submit(describe_frame, f): f for f in frame_paths}
-            for future in as_completed(future_to_frame):
-                desc = future.result()
-                descriptions.append(desc)
+            # future_to_frame = {executor.submit(describe_frame, f): f for f in frame_paths}
+            # for future in as_completed(future_to_frame):
+            #     desc = future.result()
+            #     descriptions.append(desc)
+            future_to_index = {executor.submit(describe_frame, f): i for i, f in enumerate(frame_paths)}
+            for future in as_completed(future_to_index):
+                i = future_to_index[future]
+                descriptions[i] = future.result()  # Store result at correct index
 
         # Clean up frame images
         for path in frame_paths:
